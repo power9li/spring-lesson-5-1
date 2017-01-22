@@ -1,0 +1,14 @@
+1. 定义两套Profile，一套供单元测试，大概有以下Component：
+	1) DataSource
+	2) MyCoursesService{
+	    //访问Datasource，获取JDBC连接，执行 select id , name, mark from course;
+ 	    public List<TCourse> getAllCourse();
+ 	}
+
+	当用生产环境的Profile的时候，Datasource采用 Spring Datasource 或者DBCP等某个常见的，数据库则使用Mysql
+	当测试环境的时候，Datasource用Mock的，Connection也是Mock的，结果集也是Mock出来的
+
+2. 可选题
+	开发一个BeanPostProcessor,检查Bean的定义的属性，属性超过4个的，或者接口超过2个，打印出来详情，（属性列表或者接口类名）：
+	warning xxxx has 5 properties
+		property xxx type yyyy
