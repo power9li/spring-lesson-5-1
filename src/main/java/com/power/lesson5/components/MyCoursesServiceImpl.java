@@ -36,22 +36,26 @@ public class MyCoursesServiceImpl implements MyCoursesService {
 
     @Override
     public boolean updateCourse(Course course) {
+        Printer.print("MyCoursesServiceImpl.updateCourse");
         if (course.getId() == null) {
             return false;
         }
         int update = jdbcTemplate.update("update course set name = '" + course.getName()
                 + "' , mark = '" + course.getMark() + "' where id = " + course.getId());
+        Printer.print("updated row =[" + update + "]");
         return update > 0;
     }
 
     @Override
     public boolean deleteCourse(Long id) {
+        Printer.print("MyCoursesServiceImpl.deleteCourse");
         int deleted = jdbcTemplate.update("delete from course where id =" + id);
         return deleted > 0;
     }
 
     @Override
     public Course getById(Long id) {
+        Printer.print("MyCoursesServiceImpl.getById");
         Course course = jdbcTemplate.queryForObject("select * from course where id = "
                 + id, new CourseRowMapper());
         return course;

@@ -3,7 +3,6 @@ package com.power.spring.lesson5_1.listeners;
 import com.power.lesson5.utils.Printer;
 import org.mockito.Mockito;
 import org.mockito.internal.stubbing.answers.DoesNothing;
-import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.TestContext;
 import org.springframework.test.context.TestExecutionListener;
 
@@ -16,7 +15,7 @@ import java.sql.Statement;
 /**
  * Created by shenli on 2017/1/23.
  */
-public class MockExecutionListener implements TestExecutionListener {
+public class MockCourseExecutionListener implements TestExecutionListener {
 
 
     private Statement stmt = null;
@@ -46,7 +45,6 @@ public class MockExecutionListener implements TestExecutionListener {
     @Override
     public void beforeTestMethod(TestContext testContext) throws Exception {
         Method testMethod = testContext.getTestMethod();
-        ApplicationContext applicationContext = testContext.getApplicationContext();
         String name = testMethod.getName();
         Printer.print("\n =============[[[ " + name + "]]]============");
         if (name.equals("test_01_addCourse")) {
@@ -72,12 +70,17 @@ public class MockExecutionListener implements TestExecutionListener {
                 Mockito.when(rstst.getString("mark")).thenReturn("90").thenReturn("82");
                 return rstst;
             }).when(stmt).executeQuery(Mockito.anyString());
+        } else if (name.equals("test_04_update")) {
+            Mockito.doAnswer(rt->{
+                Printer.print("return ResultSet.[1]");
+                return 1L;
+            }).when(stmt).executeUpdate(Mockito.anyString());
         }
     }
 
     @Override
     public void afterTestMethod(TestContext testContext) throws Exception {
-        Printer.print("MockExecutionListener.afterTestMethod");
+        Printer.print("MockCourseExecutionListener.afterTestMethod");
 //        Mockito.reset(Statement.class);
     }
 

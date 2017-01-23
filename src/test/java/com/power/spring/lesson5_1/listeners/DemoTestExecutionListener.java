@@ -7,30 +7,30 @@ import org.springframework.test.context.TestExecutionListener;
 /**
  * Created by shenli on 2017/1/22.
  */
-public class CourseTestExecutionListener implements TestExecutionListener {
+public class DemoTestExecutionListener implements TestExecutionListener {
 
     @Override
     public void beforeTestClass(TestContext testContext) throws Exception {
-        Printer.print("CourseTestExecutionListener.beforeTestClass");
+        Printer.print("DemoTestExecutionListener.beforeTestClass");
     }
 
     @Override
     public void prepareTestInstance(TestContext testContext) throws Exception {
-        Printer.print("CourseTestExecutionListener.prepareTestInstance");
+        Printer.print("DemoTestExecutionListener.prepareTestInstance");
     }
 
     @Override
     public void beforeTestMethod(TestContext testContext) throws Exception {
-        Printer.print("CourseTestExecutionListener.beforeTestMethod");
+        Printer.print("DemoTestExecutionListener.beforeTestMethod");
     }
 
     @Override
     public void afterTestMethod(TestContext testContext) throws Exception {
-        Printer.print("CourseTestExecutionListener.afterTestMethod");
+        Printer.print("DemoTestExecutionListener.afterTestMethod");
     }
 
     @Override
     public void afterTestClass(TestContext testContext) throws Exception {
-        Printer.print("CourseTestExecutionListener.afterTestClass");
+        Printer.print("DemoTestExecutionListener.afterTestClass");
     }
 }

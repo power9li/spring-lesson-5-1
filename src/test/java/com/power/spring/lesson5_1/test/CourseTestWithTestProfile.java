@@ -4,9 +4,11 @@ import com.power.lesson5.components.MyCoursesService;
 import com.power.lesson5.config.BaseConfig;
 import com.power.lesson5.domain.Course;
 import com.power.lesson5.utils.Printer;
-import com.power.spring.lesson5_1.listeners.MockExecutionListener;
+import com.power.spring.lesson5_1.listeners.MockCourseExecutionListener;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ActiveProfiles;
@@ -23,7 +25,8 @@ import java.util.List;
 @ComponentScan(basePackages = "com.power.lesson5")
 @ContextConfiguration(classes = BaseConfig.class)
 @ActiveProfiles(value = "profile_test")
-@TestExecutionListeners(listeners = MockExecutionListener.class,mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
+@FixMethodOrder(value = MethodSorters.NAME_ASCENDING)
+@TestExecutionListeners(listeners = MockCourseExecutionListener.class,mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
 public class CourseTestWithTestProfile {
 
     @Autowired
@@ -50,6 +53,16 @@ public class CourseTestWithTestProfile {
     public void test_03_getById(){
         Course course = myCoursesService.getById(1L);
         Printer.print(course);
+    }
+
+    @Test
+    public void test_04_update(){
+        Course course = new Course();
+        course.setId(2L);
+        course.setName("英语");
+        course.setMark("85");
+        boolean b = myCoursesService.updateCourse(course);
+        Printer.print("b = " + b);
     }
 
 }

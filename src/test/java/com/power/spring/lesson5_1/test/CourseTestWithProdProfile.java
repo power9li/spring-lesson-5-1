@@ -4,7 +4,7 @@ import com.power.lesson5.components.MyCoursesService;
 import com.power.lesson5.config.BaseConfig;
 import com.power.lesson5.domain.Course;
 import com.power.lesson5.utils.Printer;
-import com.power.spring.lesson5_1.listeners.CourseTestExecutionListener;
+import com.power.spring.lesson5_1.listeners.DemoTestExecutionListener;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -29,7 +29,7 @@ import java.util.List;
 @ContextConfiguration(classes = BaseConfig.class)
 @ActiveProfiles("profile_prod")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-@TestExecutionListeners(listeners = CourseTestExecutionListener.class,
+@TestExecutionListeners(listeners = DemoTestExecutionListener.class,
         mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
 @Transactional
 public class CourseTestWithProdProfile {
