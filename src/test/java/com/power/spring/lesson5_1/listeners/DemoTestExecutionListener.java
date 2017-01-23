@@ -22,11 +22,13 @@ public class DemoTestExecutionListener implements TestExecutionListener {
     @Override
     public void beforeTestMethod(TestContext testContext) throws Exception {
         Printer.print("DemoTestExecutionListener.beforeTestMethod");
+        System.out.println("==============[[[ "+testContext.getTestMethod().getName()+" ]]]===============");
     }
 
     @Override
     public void afterTestMethod(TestContext testContext) throws Exception {
         Printer.print("DemoTestExecutionListener.afterTestMethod");
+        System.out.println("==========================================");
     }
 
     @Override

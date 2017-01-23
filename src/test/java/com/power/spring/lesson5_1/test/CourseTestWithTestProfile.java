@@ -15,6 +15,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,6 +28,7 @@ import java.util.List;
 @ActiveProfiles(value = "profile_test")
 @FixMethodOrder(value = MethodSorters.NAME_ASCENDING)
 @TestExecutionListeners(listeners = MockCourseExecutionListener.class,mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
+@Transactional
 public class CourseTestWithTestProfile {
 
     @Autowired
@@ -62,6 +64,12 @@ public class CourseTestWithTestProfile {
         course.setName("英语");
         course.setMark("85");
         boolean b = myCoursesService.updateCourse(course);
+        Printer.print("b = " + b);
+    }
+
+    @Test
+    public void test_05_delete(){
+        boolean b = myCoursesService.deleteCourse(1L);
         Printer.print("b = " + b);
     }
 

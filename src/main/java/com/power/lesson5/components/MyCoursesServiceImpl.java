@@ -50,6 +50,7 @@ public class MyCoursesServiceImpl implements MyCoursesService {
     public boolean deleteCourse(Long id) {
         Printer.print("MyCoursesServiceImpl.deleteCourse");
         int deleted = jdbcTemplate.update("delete from course where id =" + id);
+        Printer.print("deleted row =[" + deleted + "]");
         return deleted > 0;
     }
 
