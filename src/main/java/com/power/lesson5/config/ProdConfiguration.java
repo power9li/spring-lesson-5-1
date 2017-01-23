@@ -16,7 +16,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @Component
-@PropertySource("classpath:test.properties")
+@PropertySource("classpath:prod.properties")
 @Profile("profile_prod")
 public class ProdConfiguration {
 
@@ -29,13 +29,13 @@ public class ProdConfiguration {
     @Value(value = "${conn.password}")
     private String password;
 
+    @Value(value = "${conn.driver}")
+    private String driverName;
+
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource(connectionUrl,username,password);
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setDriverClassName(driverName);
         return dataSource;
     }
-
-
-
 }

@@ -10,8 +10,8 @@ public class Printer {
 
     private static final SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss.SSS");
 
-    public static void print(String s){
-        System.out.println(format.format(new Date()) + " " + s);
+    public static void print(Object s){
+        System.out.println(format.format(new Date()) + " " + s.toString());
     }
 
 

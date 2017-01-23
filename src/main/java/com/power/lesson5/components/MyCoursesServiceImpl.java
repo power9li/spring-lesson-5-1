@@ -21,14 +21,16 @@ public class MyCoursesServiceImpl implements MyCoursesService {
     @Override
     public List<Course> getAllCourse() {
         Printer.print("MyCoursesServiceImpl.getAllCourse");
-        List<Course> courseList = jdbcTemplate.query("select id, name, mark from course", new CourseRowMapper());
+        List<Course> courseList = jdbcTemplate.query("select id, name, mark from course",
+                new CourseRowMapper());
         return courseList;
     }
 
     @Override
     public boolean addCourse(Course course) {
         Printer.print("MyCoursesServiceImpl.addCourse");
-        jdbcTemplate.execute("insert into course (name,mark) values(" + course.getName() + "," + course.getMark() + ")");
+        jdbcTemplate.execute("insert into course (name,mark) values(" + course.getName()
+                + "," + course.getMark() + ")");
         return true;
     }
 
@@ -37,7 +39,8 @@ public class MyCoursesServiceImpl implements MyCoursesService {
         if (course.getId() == null) {
             return false;
         }
-        int update = jdbcTemplate.update("update course set name = '" + course.getName() + "' , mark = '" + course.getMark() + "' where id = " + course.getId());
+        int update = jdbcTemplate.update("update course set name = '" + course.getName()
+                + "' , mark = '" + course.getMark() + "' where id = " + course.getId());
         return update > 0;
     }
 
@@ -49,7 +52,8 @@ public class MyCoursesServiceImpl implements MyCoursesService {
 
     @Override
     public Course getById(Long id) {
-        Course course = jdbcTemplate.queryForObject("select * from course where id = " + id, new CourseRowMapper());
+        Course course = jdbcTemplate.queryForObject("select * from course where id = "
+                + id, new CourseRowMapper());
         return course;
     }
 

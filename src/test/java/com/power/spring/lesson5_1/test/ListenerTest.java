@@ -32,6 +32,11 @@ public class ListenerTest {
         Printer.print("ListenerTest.test");
     }
 
+    @Test
+    public void test2(){
+        Printer.print("ListenerTest.test2");
+    }
+
     @After
     public void after(){
         Printer.print("ListenerTest.after");
