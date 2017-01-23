@@ -1,4 +1,4 @@
-package com.power.spring.lesson5_1.test;
+package com.power.spring.lesson5_1.listeners;
 
 import com.power.lesson5.utils.Printer;
 import org.springframework.test.context.TestContext;
