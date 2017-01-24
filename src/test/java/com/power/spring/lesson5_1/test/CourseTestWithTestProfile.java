@@ -27,13 +27,13 @@ import java.util.List;
 @ContextConfiguration(classes = BaseConfig.class)
 @ActiveProfiles(value = "profile_test")
 @FixMethodOrder(value = MethodSorters.NAME_ASCENDING)
-@TestExecutionListeners(listeners = MockCourseExecutionListener.class,mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
+@TestExecutionListeners(listeners = MockCourseExecutionListener.class,
+        mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
 @Transactional
 public class CourseTestWithTestProfile {
 
     @Autowired
     private MyCoursesService myCoursesService;
-
 
     @Test
     public void test_02_GetAllCourse(){
